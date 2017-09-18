@@ -1,0 +1,419 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html,body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #424242;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+html {
+    font-size: 100px;
+}
+
+img {
+    display: block;
+    border: none;
+}
+
+.arrow {
+    width: .48rem;
+    height: .36rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -.24rem;
+    bottom: .2rem;
+    z-index: 10;
+    background: url("../img/arrow.png") no-repeat;
+    background-size: 100% 100%;
+
+    -webkit-animation: bounce 2s linear 0s infinite both;
+    animation: bounce 2s linear 0s infinite both;
+}
+.music {
+    width: .6rem;
+    height: .6rem;
+    position: absolute;
+    top:.2rem;
+    right: .2rem;
+    z-index: 10;
+    background: url("../img/qq.png") no-repeat;
+    background-size: 100% 100%;
+    display: none;
+}
+
+.music audio {
+    display: none;
+}
+
+.music.move {
+    -webkit-animation: musicMove 1s linear 0s infinite both;
+    animation: musicMove 1s linear 0s infinite both;
+}
+
+.main, .swiper-container, .swiper-slide {
+    height: 100%;
+    width: 100%;
+}
+ .page1 {
+     background-image: url("../img/bg1.jpg");
+     background-size: 100% 100%;
+ }
+.page2 {
+    background-image: url("../img/bg2.jpg");
+    background-size: 100% 100%;
+}
+
+
+.page1 > div {
+    position: absolute;
+}
+
+.page1 > div > img {
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+}
+
+.page1 > div:nth-child(1) {
+    left: 2rem;
+    top: .28rem;
+    width: .96rem;
+    height: 2.32rem;
+}
+
+.page1 > div:nth-child(2) {
+    right: 0;
+    top: .28rem;
+    width: 3.7rem;
+    height: 6rem;
+}
+
+.page1 > div:nth-child(3) {
+    left: .5rem;
+    bottom: .8rem;
+    width: 5.5rem;
+    height: 5.12rem;
+}
+
+.page1 > div:nth-child(4) {
+    left: -1.6rem;
+    bottom: 0;
+    width: 7.86rem;
+    height: 5.88rem;
+}
+
+/*page1 动画,实现 切换完成后页面中的元素再开始运动的思想:开始的时候,当前的这个区域没有对应的ID,当切换的这个区域的时候,我们为其增加ID,
+在css中,我们把所有的动画都放在指定的ID下,这样的话只需要让区域有ID,里面的子元素就有动画了*/
+
+#page1 div:nth-child(1) img {
+    -webkit-animation: fadeInLeft 1s linear 0s 1 both;
+    animation: fadeInLeft 1s linear 0s 1 both;
+}
+#page1 div:nth-child(2) img {
+    -webkit-animation: fadeInRight 1s linear .3s 1 both;
+    animation: fadeInRight 1s linear .3s 1 both;
+}
+#page1 div:nth-child(3) img {
+     -webkit-animation: bounceInUp 1s linear .6s 1 both;
+     animation: bounceInUp 1s linear .6s 1 both;
+}
+#page1 div:nth-child(4) img {
+    -webkit-animation: bounceInUp 1s linear 1s 1 both;
+    animation: bounceInUp 1s linear 1s 1 both;
+}
+
+.page2 > div {
+    position: absolute;
+    width: 0.61rem;
+    height: 6.38rem;
+}
+
+.page2 > div > img {
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+}
+
+.page2 > div:nth-child(1) {
+    left: 0;
+    top: .1rem;
+    width: 3.4rem;
+    height: 1.74rem;
+}
+
+.page2 > div:nth-child(2) {
+    left: 4.3rem;
+    top: 2.6rem;
+}
+
+.page2 > div:nth-child(3) {
+    left: 2.9rem;
+    top: 2.6rem;
+}
+
+.page2 > div:nth-child(4) {
+    left: 1.48rem;
+    top: 2.6rem;
+}
+
+#page2 div:nth-child(1) img {
+    -webkit-animation: fadeIn 1s linear 0s 1 both;
+    animation: fadeIn 1s linear 0s 1 both;
+}
+#page2 div:nth-child(2) img {
+    -webkit-animation: fadeIn 1s linear .3s 1 both;
+    animation: fadeIn 1s linear .3s 1 both;
+}
+#page2 div:nth-child(3) img {
+    -webkit-animation: fadeIn 1s linear .6s 1 both;
+    animation: fadeIn 1s linear .6s 1 both;
+}
+#page2 div:nth-child(4)  img{
+    -webkit-animation: fadeIn 1s linear 1s 1 both;
+    animation: fadeIn 1s linear 1s 1 both;
+}
+
+/*css3 Animation*/
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@-webkit-keyframes fadeInRight {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@-webkit-keyframes bounceInUp {
+    from, 60%, 75%, 90%, to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 3000px, 0);
+        transform: translate3d(0, 3000px, 0);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -20px, 0);
+        transform: translate3d(0, -20px, 0);
+    }
+
+    75% {
+        -webkit-transform: translate3d(0, 10px, 0);
+        transform: translate3d(0, 10px, 0);
+    }
+
+    90% {
+        -webkit-transform: translate3d(0, -5px, 0);
+        transform: translate3d(0, -5px, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes bounceInUp {
+    from, 60%, 75%, 90%, to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 3000px, 0);
+        transform: translate3d(0, 3000px, 0);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -20px, 0);
+        transform: translate3d(0, -20px, 0);
+    }
+
+    75% {
+        -webkit-transform: translate3d(0, 10px, 0);
+        transform: translate3d(0, 10px, 0);
+    }
+
+    90% {
+        -webkit-transform: translate3d(0, -5px, 0);
+        transform: translate3d(0, -5px, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@-webkit-keyframes bounce {
+    from, 20%, 53%, 80%, to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transform: translate3d(0,0,0);
+    }
+
+    40%, 43% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -30px, 0);
+    }
+
+    70% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -15px, 0);
+    }
+
+    90% {
+        transform: translate3d(0,-4px,0);
+    }
+}
+@-webkit-keyframes bounce {
+    from, 20%, 53%, 80%, to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+    }
+
+    40%, 43% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -30px, 0);
+        opacity: .4;
+    }
+
+    70% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -15px, 0);
+        opacity: .6;
+    }
+
+    90% {
+        transform: translate3d(0,-4px,0);
+        opacity: .8;
+    }
+}
+
+@keyframes bounce {
+    from, 20%, 53%, 80%, to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+    }
+
+    40%, 43% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -30px, 0);
+        opacity: .4;
+    }
+
+    70% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -15px, 0);
+        opacity: .6;
+    }
+
+    90% {
+        transform: translate3d(0,-4px,0);
+        opacity: .8;
+    }
+}
+
+@-webkit-keyframes musicMove {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes musicMove {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
